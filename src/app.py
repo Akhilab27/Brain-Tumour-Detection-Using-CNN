@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import tensorflow as tf
 import cv2
+import os
 from PIL import Image
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -24,12 +25,13 @@ st.markdown("Upload an MRI scan to detect whether a brain tumor is present.")
 # LOAD MODEL
 # -----------------------------
 import os
-from tensorflow.keras.models import load_model
+from model import build_model
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "..", "brain_tumor_cnn_model.keras")
+WEIGHTS_PATH = os.path.join(BASE_DIR, "..", "brain_tumor_weights.weights.h5")
 
-model = load_model(MODEL_PATH, compile=False)
+model = build_model()
+model.load_weights(WEIGHTS_PATH)
 
 IMG_SIZE = 150
 
