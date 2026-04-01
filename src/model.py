@@ -15,9 +15,9 @@ def build_model(img_size=150):
         layer.trainable = False
 
     x = base_model.output
-    x = GlobalAveragePooling2D()(x)
-    x = Dense(128, activation="relu")(x)
-    x = Dropout(0.5)(x)
+    x = GlobalAveragePooling2D()(x) # it reduces the feature maps 
+    x = Dense(128, activation="relu")(x) # it learns the patterns 
+    x = Dropout(0.5)(x) # it prevents overfitting
     output = Dense(1, activation="sigmoid")(x)
 
     model = Model(inputs=base_model.input, outputs=output)

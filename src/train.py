@@ -14,7 +14,7 @@ history = model.fit(
     validation_data=val_generator,
     epochs=20
 )
-model.save("brain_tumor_cnn_model.h5")
+model.save("brain_tumor_cnn_model.h5") # Here we are saving the model for prediction and testing 
 
 loss, accuracy = model.evaluate(val_generator)
 print(f"Validation Accuracy: {accuracy * 100:.2f}%")
