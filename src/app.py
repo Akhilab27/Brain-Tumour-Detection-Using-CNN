@@ -22,7 +22,7 @@ st.markdown("Upload an MRI scan to detect whether a brain tumor is present.")
 # -----------------------------
 # LOAD MODEL
 # -----------------------------
-model = load_model("brain_tumor_cnn_model.h5", compile=False)
+model = load_model("../brain_tumor_cnn_model.keras", compile=False)
 
 IMG_SIZE = 150
 
