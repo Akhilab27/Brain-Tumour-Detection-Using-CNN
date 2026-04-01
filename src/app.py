@@ -1,3 +1,4 @@
+
 import streamlit as st
 import numpy as np
 import tensorflow as tf
@@ -22,7 +23,13 @@ st.markdown("Upload an MRI scan to detect whether a brain tumor is present.")
 # -----------------------------
 # LOAD MODEL
 # -----------------------------
-model = load_model("../brain_tumor_cnn_model.keras", compile=False)
+import os
+from tensorflow.keras.models import load_model
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "..", "brain_tumor_cnn_model.keras")
+
+model = load_model(MODEL_PATH, compile=False)
 
 IMG_SIZE = 150
 
